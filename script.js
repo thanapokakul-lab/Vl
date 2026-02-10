@@ -7,7 +7,21 @@ function showScene(index) {
 }
 
 function nextScene() {
-  current++;
+  if (current < scenes.length - 1) {
+    current++;
+    showScene(current);
+  }
+}
+
+function prevScene() {
+  if (current > 0) {
+    current--;
+    showScene(current);
+  }
+}
+
+function goHome() {
+  current = 0;
   showScene(current);
 }
 
@@ -17,6 +31,5 @@ function acceptGift() {
 }
 
 function rejectGift() {
-  current++;
-  showScene(current);
+  nextScene();
 }
