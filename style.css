@@ -1,35 +1,37 @@
-let current = 0;
-const scenes = document.querySelectorAll(".scene");
-
-function showScene(index) {
-  scenes.forEach(scene => scene.classList.remove("active"));
-  scenes[index].classList.add("active");
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(#ffd6e8, #fff);
+  text-align: center;
 }
 
-function nextScene() {
-  if (current < scenes.length - 1) {
-    current++;
-    showScene(current);
-  }
+.scene {
+  display: none;
+  padding: 40px;
 }
 
-function prevScene() {
-  if (current > 0) {
-    current--;
-    showScene(current);
-  }
+.scene.active {
+  display: block;
 }
 
-function goHome() {
-  current = 0;
-  showScene(current);
+img {
+  width: 80%;
+  max-width: 300px;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
-function acceptGift() {
-  current = scenes.length - 1;
-  showScene(current);
+button {
+  background: #ff5fa2;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px;
+  color: white;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-function rejectGift() {
-  nextScene();
+button:hover {
+  background: #ff3f8e;
 }
