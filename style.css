@@ -1,1 +1,37 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(#ffd6e8, #fff);
+  text-align: center;
+}
 
+.scene {
+  display: none;
+  padding: 40px;
+}
+
+.scene.active {
+  display: block;
+}
+
+img {
+  width: 80%;
+  max-width: 300px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+button {
+  background: #ff5fa2;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px;
+  color: white;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ff3f8e;
+}
