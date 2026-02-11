@@ -33,8 +33,9 @@ body{
 /* ทำให้รูปไม่ยาวเกินจอ */
 img{
   width:100%;
-  max-height:45vh;
-  object-fit:cover;
+  max-height:60vh;   /* เพิ่มพื้นที่ให้รูปแนวตั้ง */
+  height:auto;       /* รักษาสัดส่วนจริง */
+  object-fit:contain; /* ไม่ตัดรูป */
   border-radius:15px;
   margin-bottom:15px;
 }
