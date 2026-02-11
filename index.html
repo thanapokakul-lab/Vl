@@ -13,7 +13,7 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   color:#fff;
   text-align:center;
   overflow:hidden;
@@ -24,7 +24,6 @@ body{
   padding:25px;
   border-radius:20px;
   max-width:360px;
-  position:relative;
   backdrop-filter: blur(10px);
 }
 
@@ -77,13 +76,11 @@ button{
 
 <div class="card" id="card">
 
-  <!-- INTRO -->
   <div id="intro">
     <div class="intro-text" id="introText"></div>
     <button onclick="startMain()">เข้าสู่ค่ำคืนพิเศษ ✨</button>
   </div>
 
-  <!-- MAIN CONTENT -->
   <div id="main" class="hidden">
     <div id="content"></div>
     <button id="nextBtn" onclick="nextScene()">ถัดไป 💕</button>
@@ -93,7 +90,6 @@ button{
 
 <script>
 const bgm = document.getElementById("bgm");
-bgm.volume = 0;
 
 const introLines = [
   "This night is sparkling ✨",
@@ -119,16 +115,10 @@ function showIntro(){
 showIntro();
 
 function startMain(){
-  bgm.play();
-
-  // fade in เพลง
-  let fadeAudio = setInterval(() => {
-    if(bgm.volume < 1){
-      bgm.volume += 0.05;
-    } else {
-      clearInterval(fadeAudio);
-    }
-  }, 200);
+  bgm.volume = 0.3;
+  bgm.play().catch(() => {
+    alert("ถ้าเพลงยังไม่ดัง ลองกดปุ่มอีกครั้งนะคะ 💕");
+  });
 
   document.getElementById("intro").classList.add("hidden");
   document.getElementById("main").classList.remove("hidden");
@@ -148,18 +138,16 @@ const scenes = [
 
   `<img src="photo1.jpg">
   <p>ทุกอย่างเริ่มจากวันธรรมดา<br>
-  แต่เมื่อเจอเธอ กลายเป็นวันพิเศษขึ้นมาทันที<br>
-  (อ้วกแป๊บบบ!!)</p>`,
+  แต่เมื่อเจอเธอ กลายเป็นวันพิเศษขึ้นมาทันที</p>`,
 
   `<img src="photo2.jpg">
   <p>คำว่าบ้าน บางทีความรู้สึกมันก็หมายถึงเธอ</p>`,
 
   `<img src="photo3.jpg">
-  <p>รอยยิ้มของเธอ<br>
-  คือสิ่งที่เบลอยากเห็นทุกวัน</p>`,
+  <p>รอยยิ้มของเธอ คือสิ่งที่เบลอยากเห็นทุกวัน</p>`,
 
   `<img src="photo4.jpg">
-  <p>บางวันที่เบลทำตัวไม่น่ารัก หรือนิสัยไม่ดี<br>
+  <p>บางวันที่เบลทำตัวไม่น่ารัก<br>
   ขอบคุณที่ยังอยู่ด้วยกัน</p>`,
 
   `<img src="photo5.jpg">
@@ -171,7 +159,7 @@ const scenes = [
   <p>คือหัวใจของเบลทั้งดวง<br>
   เกรซจะรับไว้ไหมนะ..??</p>
   <button onclick="accept()">รับสิคะ 💖</button>
-  <button class="secondary" onclick="thinkAgain()">ไม่รับ (จะดีหรอคะ) 🙈</button>`
+  <button class="secondary" onclick="thinkAgain()">ไม่รับ 🙈</button>`
 ];
 
 function nextScene(){
@@ -188,33 +176,20 @@ function nextScene(){
 function accept(){
   document.getElementById("card").innerHTML =
   `<div class="fade">
-  <h2>ฝากหัวใจดวงนี้ ไว้กับเธอนะคะ💕</h2>
+  <h2>ฝากหัวใจดวงนี้ ไว้กับเธอนะคะ 💕</h2>
   <img src="photo7.jpg">
   <p>เบลขออยู่กับเกรซไปทุกวันเลยนะ<br>
-  Happy Valentine’s Day ka 💖</p>
+  Happy Valentine’s Day 💖</p>
   </div>`;
 }
 
 function thinkAgain(){
-  document.getElementById("content").innerHTML =
-  `<div class="fade">
-  <h2>เดี๋ยวก่อน 😼</h2>
-  <p>แน่ใจหรอคะ…<br>
-  ถ้าไม่รับเบลจะ…<br>
-  เมี้ยวๆ</p>
-  <button onclick="meow()">คืนนี้จัดไปค่ะ😼</button>
-  <button onclick="meow()">ให้ทั้งรัก และทั้งเมี้ยวค่ะ😽</button>
-  </div>`;
-}
-
-function meow(){
   document.getElementById("card").innerHTML =
   `<div class="fade">
   <h2>เมี้ยววว~ 😽💖</h2>
   <img src="photo8.jpg">
   <p>รักนะคะ เจอกันที่เตียง (อิอิ)<br>
-  เดี๋ยวจะพาไปหาอะไรกินอร่อยๆ ค่ะ</p>
-  <p>Happy Valentine’s Day 💕</p>
+  Happy Valentine’s Day 💕</p>
   </div>`;
 }
 </script>
